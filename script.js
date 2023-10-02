@@ -962,3 +962,45 @@ var products = [
         "name": "Original Frankfurter grüne Soße"
     }
 ]
+
+//fiyatı 30 ile 100 arasında kaç adet ürün var?
+const filteredProducts = products.filter((product) => {
+    return product.unitPrice > 30 && product.unitPrice <= 100
+})
+console.log(`Fiyatı 30 ile 100 arasında bulunan ürün adedi: ${filteredProducts.length}`)
+
+// //ismi a harfi ile başlayan ürünleri console a yazdır
+console.log(`İsmi a harfiyle başlayan ürünler:`)
+const productStartsWithA = products.filter((product) => {
+    product.name.startsWith("A") && console.log(product.name)
+})
+
+// ismi a harfi ile BİTEN ürünleri console a yazdır
+console.log(`İsmi a harfiyle biten ürünler:`)
+const productEndsWithA = products.filter((product) => {
+    product.name.endsWith("a") && console.log(product.name)
+})
+
+// id si 10 olan ürünün adını console a yazdır
+const productId10 = products.filter((product) => {
+    product.id === 10 && console.log(`Id'si 10 olan ürünün adı: ${product.name}`)
+})
+
+// //discontinued false olan kaç ürün var
+const falseDiscontinuedProduct = products.filter((product) => {
+    return product.discontinued === false
+})
+console.log(`Discontinued değeri false olan ürün adedi: ${falseDiscontinuedProduct.length}`)
+
+// en pahalı ve en ucuz ürün için tüm fiyatları getiriyoruz
+const prds = products.map((product) => {
+    return product.unitPrice
+})
+
+// en pahalı ürünün adını console a yazdır 
+const mostExpensiveProduct = products.find(product => product.unitPrice === Math.max(...prds))
+console.log(`En pahalı ürünün adı: ${mostExpensiveProduct.name}`)
+
+// //en ucuz ürünün adını console a yazdır
+const cheapestProduct = products.find(product => product.unitPrice === Math.min(...prds))
+console.log(`En ucuz ürünün adı: ${cheapestProduct.name}`)
